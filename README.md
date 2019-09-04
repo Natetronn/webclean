@@ -3,8 +3,11 @@
 > Webclean is a simple X3 Config Live Skin for the original Xbox
 
 ## Installation
-1. Download: https://github.com/Natetronn/webclean/archive/v.1.0.zip
+1. [Download latest release](https://github.com/Natetronn/webclean/releases) & extract it
 2. Upload the Webclean directory to E:/x3skins
+3. While holding the white button, start your Xbox; this boots into X3 Config Live
+4. Select X3 Config Live > X3CL Skins > Webclean to set skin
+5. Enjoy!
 
 
 ## Versions
