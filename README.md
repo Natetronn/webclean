@@ -12,8 +12,8 @@
 *Note: see either skin's x3skin.ini for more details and or to adjust settings. For example, you can adjust text alignment, colors and more, if needed. Also, if you like, you can turn on the Clock and or the HDD partition sizes; it's set and ready to go but, turned off by default.*
 
 ## Versions
-V1.1 - Added Dark Version (new) and Lite Version (original)
-V1.0 - Initial Release
+- V1.1 - Added Dark Version (new) and Lite Version (original)
+- V1.0 - Initial Release
 
 ## License
 
