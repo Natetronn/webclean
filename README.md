@@ -1,3 +1,5 @@
+![Webclean Dark](./source/webclean-dark-skin-bg.png)
+
 # Webclean
 
 > Webclean is a simple X3 Config Live Skin for the original Xbox
