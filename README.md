@@ -16,6 +16,7 @@
 
 ## Versions
 
+- v1.1.2 - Updated README.md and added source image on Download branch
 - v1.1.1 - Adjusted right alignments
 - v1.1 - Added Dark Version (new) and Lite Version (original)
 - v1.0 - Initial Release
