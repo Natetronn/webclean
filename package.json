@@ -1,0 +1,28 @@
+{
+  "name": "webclean",
+  "version": "1.2.0",
+  "description": "Webclean is a simple X3 Config Live Skin for the original Xbox",
+  "main": "index.js",
+  "scripts": {
+    "act": "act -j zip-files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Natetronn/webclean.git"
+  },
+  "keywords": [
+    "xbox",
+    "skins",
+    "x3",
+    "xecuter",
+    "ogxbox",
+    "team-xecuter",
+    "x3cl"
+  ],
+  "author": "Natetronn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Natetronn/webclean/issues"
+  },
+  "homepage": "https://github.com/Natetronn/webclean#readme"
+}

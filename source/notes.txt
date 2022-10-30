@@ -1,6 +1,0 @@
-Note: anything larger than around 921k for the background image doesn't seem to work. 1.3MB image didn't work, anyway. I tried using an svg as well, as it was only 22k, for kicks and giggle to see what would happen but, that didn't work, of course. Must be a .bmp filetype, it seems. If anyone knows how to edit the bios to accept other filetypes let me know.
-
-First use Trimage Image Compressor, or similar, on the PNG. Then convert to BMP using the following:
-
-imagemagick cmd: convert -quality 100 [image-path].jpg [image-path].bmp
-

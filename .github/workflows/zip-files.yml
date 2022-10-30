@@ -1,0 +1,35 @@
+name: Zip Files
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  zip-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Zip Webclean X3CL Skins
+        uses: vimtor/action-zip@v1
+        with:
+          files: Webclean-Dark/ Webclean-Lite/ Webclean-Halloween/
+          recursive: true
+          dest: Webclean-X3CL-Skins.zip
+      - name: Zip Webclean Dark
+        uses: vimtor/action-zip@v1
+        with:
+          files: Webclean-Dark/
+          recursive: false
+          dest: Webclean-Dark-X3CL-Skin.zip
+      - name: Zip Webclean Lite
+        uses: vimtor/action-zip@v1
+        with:
+          files: Webclean-Lite/
+          recursive: false
+          dest: Webclean-Lite-X3CL-Skin.zip
+      - name: Zip Webclean Halloween
+        uses: vimtor/action-zip@v1
+        with:
+          files: Webclean-Halloween/
+          recursive: false
+          dest: Webclean-Halloween-X3CL-Skin.zip
