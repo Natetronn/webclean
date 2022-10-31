@@ -1,8 +1,10 @@
 name: Zip Files
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
+
 
 jobs:
   zip-files:
@@ -35,7 +37,8 @@ jobs:
           files: Webclean-Halloween/
           recursive: false
           dest: Webclean-Halloween-X3CL-Skin.zip
-      - uses: actions/upload-artifact@v3
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
         with:
           name: my-artifacts
           path: |
