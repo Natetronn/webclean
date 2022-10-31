@@ -48,6 +48,8 @@ jobs:
             ${{ github.workspace }}/Webclean-Halloween-X3CL-Skin.zip
       - name: Upload Releases
         uses: ncipollo/release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           artifacts: "Webclean-X3CL-Skins.zip, Webclean-Dark-X3CL-Skin.zip, Webclean-Lite-X3CL-Skin.zip, Webclean-Halloween-X3CL-Skin.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
