@@ -8,6 +8,19 @@ on:
 jobs:
   zip-files:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        name: [Webclean-All, Webclean-Dark, Webclean-Lite, Webclean-Halloween]
+        include:
+          - name: Webclean-All
+            asset_suffix: All
+          - name: Webclean-Dark
+            asset_suffix: Dark
+          - name: Webclean-Lite
+            asset_suffix: Lite
+          - name: Webclean-Halloween
+            asset_suffix: Halloween
+
     permissions:
       contents: write
     steps:
@@ -18,7 +31,7 @@ jobs:
         uses: vimtor/action-zip@v1
         with:
           files: Webclean-Dark/ Webclean-Lite/ Webclean-Halloween/
-          recursive: true
+          recursive: false
           dest: Webclean-X3CL-Skins.zip
       - name: Zip Webclean Dark
         uses: vimtor/action-zip@v1
@@ -41,22 +54,14 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: my-artifacts
+          name: Webclean-Artifacts
           path: |
-            ${{ github.workspace }}/Webclean-X3CL-Skins.zip
-            ${{ github.workspace }}/Webclean-Dark-X3CL-Skin.zip
-            ${{ github.workspace }}/Webclean-Lite-X3CL-Skin.zip
-            ${{ github.workspace }}/Webclean-Halloween-X3CL-Skin.zip
-      - name: Get Previous Tag
-        id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+            ${{ github.workspace }}/Webclean-${{ matrix.asset_suffix }}-X3CL-Skin.zip
+      - name: Upload Zips To Release
+        uses: svenstaro/upload-release-action@2.3.0
         with:
-          fallback: 1.2.0 # Optional fallback tag to use when no tag can be found
-      - name: Upload Releases
-        uses: ncipollo/release-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag: ${{ steps.previoustag.outputs.tag }}
-          artifacts: "Webclean-X3CL-Skins.zip, Webclean-Dark-X3CL-Skin.zip, Webclean-Lite-X3CL-Skin.zip, Webclean-Halloween-X3CL-Skin.zip"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ github.workspace }}/Webclean-${{ matrix.asset_suffix }}-X3CL-Skin.zip
+          asset_name: Webclean-${{ matrix.suffix }}-X3CL-Skin
+          tag: ${{ github.ref }}
+          overwrite: true
