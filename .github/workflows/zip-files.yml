@@ -13,22 +13,20 @@ jobs:
         name: [Webclean-All, Webclean-Dark, Webclean-Lite, Webclean-Halloween]
         include:
           - name: Webclean-All
-            files: Webclean-Dark/ Webclean-Lite/ Webclean-Halloween/
+            folder: Webclean-Dark Webclean-Lite Webclean-Halloween
           - name: Webclean-Dark
-            files: Webclean-Dark/
+            folder: Webclean-Dark
           - name: Webclean-Lite
-            files: Webclean-Lite/
+            folder: Webclean-Lite
           - name: Webclean-Halloween
-            files: Webclean-Halloween/
+            folder: Webclean-Halloween
 
     steps:
       - uses: actions/checkout@v3
       - name: Zip ${{ matrix.name }}
-        uses: vimtor/action-zip@v1
+        uses: montudor/action-zip@v1.0.0
         with:
-          files: ${{ matrix.files }}
-          recursive: false
-          dest: {{ matrix.name }}.zip
+          args: zip -qq -r {{ matrix.name }}.zip {{ matrix.folder }}
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
