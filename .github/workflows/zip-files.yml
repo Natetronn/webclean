@@ -13,53 +13,33 @@ jobs:
         name: [Webclean-All, Webclean-Dark, Webclean-Lite, Webclean-Halloween]
         include:
           - name: Webclean-All
-            asset_suffix: All
+            files: Webclean-Dark/ Webclean-Lite/ Webclean-Halloween/
           - name: Webclean-Dark
-            asset_suffix: Dark
+            files: Webclean-Dark/
           - name: Webclean-Lite
-            asset_suffix: Lite
+            files: Webclean-Lite/
           - name: Webclean-Halloween
-            asset_suffix: Halloween
-            
+            files: Webclean-Halloween/
+
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Zip Webclean X3CL Skins
+      - name: Zip ${{ matrix.name }}
         uses: vimtor/action-zip@v1
         with:
-          files: Webclean-Dark/ Webclean-Lite/ Webclean-Halloween/
+          files: ${{ matrix.files }}
           recursive: false
-          dest: Webclean-All-X3CL-Skin.zip
-      - name: Zip Webclean Dark
-        uses: vimtor/action-zip@v1
-        with:
-          files: Webclean-Dark/
-          recursive: false
-          dest: Webclean-Dark-X3CL-Skin.zip
-      - name: Zip Webclean Lite
-        uses: vimtor/action-zip@v1
-        with:
-          files: Webclean-Lite/
-          recursive: false
-          dest: Webclean-Lite-X3CL-Skin.zip
-      - name: Zip Webclean Halloween
-        uses: vimtor/action-zip@v1
-        with:
-          files: Webclean-Halloween/
-          recursive: false
-          dest: Webclean-Halloween-X3CL-Skin.zip
+          dest: {{ matrix.name }}.zip
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: Webclean-Artifacts
           path: |
-            ${{ github.workspace }}/Webclean-${{ matrix.asset_suffix }}.zip
+            ${{ github.workspace }}/{{ matrix.name }}.zip
       - name: Upload Zips To Release
         uses: svenstaro/upload-release-action@2.3.0
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ github.workspace }}/Webclean-${{ matrix.asset_suffix }}.zip
-          asset_name: Webclean-${{ matrix.asset_suffix }}.zip
+          file: ${{ github.workspace }}/{{ matrix.name }}.zip
+          asset_name: {{ matrix.name }}.zip
           tag: ${{ github.ref }}
           overwrite: true
