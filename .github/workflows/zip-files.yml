@@ -26,18 +26,18 @@ jobs:
       - name: Zip ${{ matrix.name }}
         uses: montudor/action-zip@v1.0.0
         with:
-          args: zip -qq -r {{ matrix.name }}.zip {{ matrix.folder }}
+          args: zip -qq -r ${{ matrix.name }}.zip ${{ matrix.folder }}
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: Webclean-Artifacts
           path: |
-            ${{ github.workspace }}/{{ matrix.name }}.zip
+            ${{ github.workspace }}/${{ matrix.name }}.zip
       - name: Upload Zips To Release
         uses: svenstaro/upload-release-action@2.3.0
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ github.workspace }}/{{ matrix.name }}.zip
-          asset_name: {{ matrix.name }}.zip
+          file: ${{ github.workspace }}/${{ matrix.name }}.zip
+          asset_name: ${{ matrix.name }}.zip
           tag: ${{ github.ref }}
           overwrite: true
